@@ -24,8 +24,8 @@ function CoworkingClient({ spaces = [] }) {
       estadoFiltro === "todos"
         ? spaces
         : spaces.filter(s =>
-            estadoFiltro === "disponible" ? !s.ocupado : s.ocupado
-          );
+          estadoFiltro === "disponible" ? !s.ocupado : s.ocupado
+        );
 
     const grouped = filtered.reduce((acc, space) => {
       const key = space.ubicacion || "otros";
@@ -57,7 +57,7 @@ function CoworkingClient({ spaces = [] }) {
         </h1>
 
         {/* STATS */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 ">
           <StatCard title="Espacios totales" value={stats.total} />
           <StatCard title="Disponibles" value={stats.disponibles} />
           <StatCard title="Ocupados" value={stats.ocupados} />
@@ -71,7 +71,7 @@ function CoworkingClient({ spaces = [] }) {
               onClick={() => setEstadoFiltro(estado)}
               className={`
                 px-4 py-2 rounded-full text-sm font-medium transition
-                ${estadoFiltro === estado 
+                ${estadoFiltro === estado
                   ? "bg-slate-900 text-white"
                   : "bg-slate-100 hover:bg-slate-200"}
               `}
@@ -112,7 +112,7 @@ function CoworkingClient({ spaces = [] }) {
 function Grid({ spaces, onClick }) {
   return (
     <AnimatePresence>
-      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))]">
         {spaces.map((space) => (
           <motion.div
             key={space.id}
@@ -132,7 +132,7 @@ function Grid({ spaces, onClick }) {
 
 function Section({ title, children }) {
   return (
-    <div className="card p-6 space-y-6 mb-6">
+    <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 space-y-6 mb-6">
       <h3 className="text-xl font-semibold capitalize">{title}</h3>
       {children}
     </div>
@@ -141,7 +141,7 @@ function Section({ title, children }) {
 
 function StatCard({ title, value }) {
   return (
-    <div className="card flex justify-between items-center px-6 py-3 border border-slate-200 bg-white/80 hover:shadow-lg">
+    <div className="flex justify-between items-center px-6 py-2 border-[1.0px] border-black rounded-[10px] bg-white/80 hover:shadow-lg">
       <span className="text-sm">{title}</span>
       <span className="text-2xl font-bold">{value}</span>
     </div>
