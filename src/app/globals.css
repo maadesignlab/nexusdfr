@@ -21,7 +21,7 @@
   --color-input-bg: #f8fafc;
   --color-input-border: #e2e8f0;
   --color-input-placeholder: #94a3b8;
-  --color-panel-bg: #be2633;
+  --color-panel-bg: #575353;
   --color-panel-border: #fde047;
   --color-panel-text: #0f172a;
 
@@ -131,6 +131,10 @@
   }
 
   /* CARD */
+  .card {
+    @apply bg-white border border-slate-200 rounded-[1.75rem] shadow-sm transition;
+  }
+
   .glass-card {
     @apply bg-white/70 backdrop-blur-md shadow-lg rounded-xl p-4 border transition;
   }
