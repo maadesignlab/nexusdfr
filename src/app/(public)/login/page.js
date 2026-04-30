@@ -45,7 +45,7 @@ function Login() {
       <div className="
         relative w-full max-w-md
         login-card rounded-[2rem]
-        p-8 sm:p-10
+        p-8 sm:p-10 bg-slate-200
       ">
 
         {/* HOME */}
@@ -104,7 +104,7 @@ function Login() {
           )}
 
           {/* DEMO */}
-          <div className="flex flex-col gap-1 mt-4 p-4 login-panel rounded-3xl text-xs font-medium">
+          <div className="flex flex-col gap-1 mt-4 p-4 login-panel rounded-3xl text-xs font-medium bg-brand-200">
             <p>Credenciales de acceso:</p>
             <p><strong>Usuario:</strong> miguel@gmail.com</p>
             <p><strong>Contraseña:</strong> 12345678</p>
