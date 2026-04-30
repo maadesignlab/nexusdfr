@@ -50,5 +50,13 @@ export const storeService = {
   // 🔹 DETALLE DE LIBRO
   async getLibroById(id) {
     return await apiEndpoints.getLibroPorId(id);
+  },
+
+  // 🔹 HISTORIAL DE COMPRAS
+  async getPurchases(userId) {
+    const res = await apiEndpoints.getPurchasedItems(userId);
+    if (res && res.compras) return res.compras;
+    if (Array.isArray(res)) return res;
+    return [];
   }
 };
