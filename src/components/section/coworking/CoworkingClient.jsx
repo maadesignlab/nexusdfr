@@ -83,7 +83,7 @@ function CoworkingClient({ spaces = [] }) {
       </div>
 
       {/* 🔥 RENDER DINÁMICO POR PISO */}
-      {Object.entries(grouped).map(([piso, spaces]) => (
+      {Object.entries(grouped).reverse().map(([piso, spaces]) => (
         <Section key={piso} title={piso}>
           <Grid spaces={spaces} onClick={setSelectedSpace} />
         </Section>
@@ -141,7 +141,7 @@ function Section({ title, children }) {
 
 function StatCard({ title, value }) {
   return (
-    <div className="card flex justify-between items-center px-6 py-3 hover:shadow-lg">
+    <div className="card flex justify-between items-center px-6 py-3 border border-slate-200 bg-white/80 hover:shadow-lg">
       <span className="text-sm">{title}</span>
       <span className="text-2xl font-bold">{value}</span>
     </div>

@@ -12,6 +12,18 @@
 
   --bg-footer: var(--color-woodsmoke-950);
   --color-bg: #f8f9fa;
+  --color-card: rgba(255, 255, 255, 0.95);
+  --color-card-border: #e2e8f0;
+  --color-card-shadow: 0 40px 80px rgba(15, 23, 42, 0.08);
+  --color-primary: #111827;
+  --color-primary-contrast: #ffffff;
+  --text-primary: #111827;
+  --color-input-bg: #f8fafc;
+  --color-input-border: #e2e8f0;
+  --color-input-placeholder: #94a3b8;
+  --color-panel-bg: #be2633;
+  --color-panel-border: #fde047;
+  --color-panel-text: #0f172a;
 
   --glass-bg: rgba(255,255,255,0.8);
   --glass-border: rgba(255,255,255,0.1);
@@ -80,19 +92,42 @@
 
   /* BOTONES */
   .btn-primary {
-    @apply bg-brand-500 text-white px-4 py-2 rounded-xl font-semibold transition;
+    @apply text-white px-4 py-2 rounded-2xl font-semibold transition;
+    background: var(--color-primary);
   }
 
   .btn-primary:hover {
-    @apply bg-brand-300 text-black;
+    background: #1f2937;
   }
 
   .btn-secondary {
-    @apply border border-gray-300 px-4 py-2 rounded-xl;
+    @apply border px-4 py-2 rounded-xl;
+    border-color: #d1d5db;
   }
 
   .btn-secondary:hover {
     @apply bg-gray-100;
+  }
+
+  .login-page {
+    background: var(--color-bg);
+  }
+
+  .login-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--color-card-shadow);
+  }
+
+  .login-home-pill {
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+
+  .login-panel {
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-panel-border);
+    color: var(--color-panel-text);
   }
 
   /* CARD */
@@ -106,8 +141,14 @@
 
   /* INPUT */
   .input {
-    @apply border border-gray-300 rounded-md px-4 py-2 w-full
-           focus:ring-2 focus:ring-brand-300 outline-none;
+    @apply rounded-md px-4 py-2 w-full focus:ring-2 outline-none;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    color: var(--text-primary);
+  }
+
+  .input::placeholder {
+    color: var(--color-input-placeholder);
   }
 
 }

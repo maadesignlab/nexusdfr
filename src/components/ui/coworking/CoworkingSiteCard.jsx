@@ -7,7 +7,7 @@ function CoworkingSiteCard({ space, onClick }) {
     <article
       onClick={onClick}
       className="
-        relative glass-card p-5
+        relative glass-card p-5 border border-slate-200 rounded-2xl
         flex flex-col gap-4
         cursor-pointer
         transition-all duration-200
