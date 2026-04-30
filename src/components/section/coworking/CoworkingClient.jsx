@@ -10,7 +10,7 @@ function CoworkingClient({ spaces = [] }) {
 
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
-  const [estadoFiltro, setEstadoFiltro] = useState("Todos");
+  const [estadoFiltro, setEstadoFiltro] = useState("todos");
 
   const closeModal = () => {
     setSelectedSpace(null);
@@ -21,10 +21,10 @@ function CoworkingClient({ spaces = [] }) {
   const { grouped, stats } = useMemo(() => {
 
     const filtered =
-      estadoFiltro === "Todos"
+      estadoFiltro === "todos"
         ? spaces
         : spaces.filter(s =>
-            estadoFiltro === "Disponible" ? !s.ocupado : s.ocupado
+            estadoFiltro === "disponible" ? !s.ocupado : s.ocupado
           );
 
     const grouped = filtered.reduce((acc, space) => {
@@ -65,7 +65,7 @@ function CoworkingClient({ spaces = [] }) {
 
         {/* FILTROS */}
         <div className="flex gap-4">
-          {["Todos", "Disponible", "Ocupado"].map((estado) => (
+          {["todos", "disponible", "ocupado"].map((estado) => (
             <button
               key={estado}
               onClick={() => setEstadoFiltro(estado)}
@@ -112,7 +112,7 @@ function CoworkingClient({ spaces = [] }) {
 function Grid({ spaces, onClick }) {
   return (
     <AnimatePresence>
-      <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
         {spaces.map((space) => (
           <motion.div
             key={space.id}
@@ -141,9 +141,9 @@ function Section({ title, children }) {
 
 function StatCard({ title, value }) {
   return (
-    <div className="flex justify-between items-center gap-4 rounded-3xl border border-slate-200 border-black rounded-3xl px-6 py-5 shadow-sm transition hover:shadow-md">
-      <span className="text-sm font-medium text-slate-700">{title}</span>
-      <span className="text-xl font-bold text-slate-950">{value}</span>
+    <div className="card flex justify-between items-center px-6 py-3 border border-slate-200 bg-white/80 hover:shadow-lg">
+      <span className="text-sm">{title}</span>
+      <span className="text-2xl font-bold">{value}</span>
     </div>
   );
 }
