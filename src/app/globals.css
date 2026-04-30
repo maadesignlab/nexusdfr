@@ -87,8 +87,7 @@
 
   /* FOOTER */
   .footer {
-    @apply bg-slate-950 text-white relative;
-    background: linear-gradient(180deg, #030712 0%, #050b16 100%);
+    @apply bg-black text-white relative;
   }
 
   /* BOTONES */
