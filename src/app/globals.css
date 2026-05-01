@@ -87,8 +87,30 @@
 
   /* FOOTER */
   .footer {
-    @apply bg-slate-950 text-white relative;
-    background: linear-gradient(180deg, #030712 0%, #050b16 100%);
+    position: relative;
+    background-color: var(--bg-footer);
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 500px;
+    background: var(--bg-footer-yellowdot-gradient);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .footer-container,
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-column {
+    @apply rounded-lg bg-gray-800 text-white p-5 border border-white/10;
   }
 
   /* BOTONES */
@@ -152,7 +174,42 @@
     color: var(--color-input-placeholder);
   }
 
-}
+  /* BTN TAB */
+  .btn-tab {
+    @apply
+    relative
+    bg-slate-100
+    p-6
+    cursor-pointer
+    top-0
+    z-10
+    border
+    border-border-light
+    rounded-t-2xl;
+
+    /* sm: tarjeta completa */
+    @apply rounded-2xl;
+
+    /* md+: vuelve a comportamiento tipo tab */
+    @apply md:rounded-t-2xl md:rounded-b-none;
+  }
+
+  /* Hover suave: solo si la tarjeta no está activa */
+    .btn-tab:not(.is-active):hover {
+      @apply bg-brand-100 shadow-lg -top-1;
+    }
+
+    /* ESTADO ACTIVO: Respuesta instantánea */
+    .btn-tab.is-active {
+      @apply bg-brand-500 shadow-xl md:-top-2 z-20;
+    }
+
+  .price-badge {
+    @apply absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold transition-all duration-200;
+  }
+}  
+
+
 
 /* =============================
    UTILIDADES

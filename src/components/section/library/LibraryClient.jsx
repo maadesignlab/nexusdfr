@@ -7,14 +7,12 @@ import BookCard from "@/components/ui/library/BookCard";
 import LibraryFilters from "@/components/section/library/LibraryFilters";
 
 export default function LibraryClient({ libros }) {
-
   const [openFilters, setOpenFilters] = useState(false);
 
   return (
-    <main className="min-h-dvh-minusheader max-w-7xl mx-auto relative">
-
+    <main className="min-h-dvh-minusheader max-w-[1480px] mx-auto relative">
       {/* BOTÓN FILTROS MOBILE */}
-      <div className="md:hidden p-6 pb-0">
+      <div className="md:hidden p-5 pb-0">
         <button
           onClick={() => setOpenFilters(true)}
           className="btn-secondary w-full py-2"
@@ -23,28 +21,31 @@ export default function LibraryClient({ libros }) {
         </button>
       </div>
 
-      <section className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
-
+      <section className="grid grid-cols-1 md:grid-cols-[250px_1fr]">
         {/* SIDEBAR */}
-        <aside className="
-          hidden md:flex md:flex-col
-          md:border-r md:border-border-default
-          md:sticky md:top-[68px]
-          md:h-[calc(100dvh-68px)]
-          p-6
-        ">
+        <aside
+          className="
+            hidden md:flex md:flex-col
+            md:border-r md:border-border-default
+            md:sticky md:top-[68px]
+            md:h-[calc(100dvh-68px)]
+            p-5 lg:p-6
+          "
+        >
           <LibraryFilters />
         </aside>
 
         {/* CATÁLOGO */}
         <section className="w-full relative">
-
           <motion.div
             layout
             className="
-              grid gap-6 p-6
-              grid-cols-1 sm:grid-cols-2
-              md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+              grid gap-5 p-5 lg:p-6
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+              xl:grid-cols-4
+              2xl:grid-cols-5
             "
           >
             <AnimatePresence mode="popLayout">
@@ -57,6 +58,7 @@ export default function LibraryClient({ libros }) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
+                    className="h-full"
                   >
                     <BookCard libro={item} />
                   </motion.div>
@@ -70,7 +72,6 @@ export default function LibraryClient({ libros }) {
               )}
             </AnimatePresence>
           </motion.div>
-
         </section>
       </section>
 
@@ -106,7 +107,6 @@ export default function LibraryClient({ libros }) {
           </>
         )}
       </AnimatePresence>
-
     </main>
   );
 }

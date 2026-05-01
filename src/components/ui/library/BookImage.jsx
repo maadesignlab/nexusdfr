@@ -17,8 +17,8 @@ function BookImage({
       sizes: "(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px",
     },
     detail: {
-      wrapper: "relative w-[280px] md:w-[320px] aspect-[2/3]",
-      sizes: "320px",
+      wrapper: "relative w-[170px] md:w-[190px] aspect-[2/3]",
+      sizes: "190px",
     },
     thumb: {
       wrapper: "relative w-8 aspect-[2/3]",
