@@ -37,6 +37,8 @@ function BookingFlow({ space, onClose, selectedHour }) {
       await new Promise((res) => setTimeout(res, 1200));
 
       // 🔥 aquí conectarías backend
+      
+      window.alert(`¡Tu reserva para ${space.nombre} a las ${bookingData.hora} ha sido confirmada con éxito!`);
 
       onClose();
       router.push("/dashboard");
