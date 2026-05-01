@@ -40,7 +40,7 @@ function BookCard({ libro }) {
             px-2.5 py-1
             rounded-full
             text-[11px] font-bold
-            bg-brand-500 text-white
+            bg-yellow-300 text-slate-950
             shadow-sm
           "
         >
