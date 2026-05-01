@@ -36,7 +36,7 @@ function HeaderUser({
         <div className="
           w-7 h-7
           rounded-full
-          bg-brand-500 text-white
+          bg-brand-500 text-black
           flex items-center justify-center text-xs font-bold
         ">
           {user?.nombre?.charAt(0) || "U"}

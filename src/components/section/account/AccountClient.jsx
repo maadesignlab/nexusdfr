@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { storeService } from "@/services/storeService";
 import { User, Calendar, ShoppingBag, Settings, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // ==========================================
 // COMPONENTES STUB
 // ==========================================
-function AccountSidebar({ onTabChange, activeTab }) {
+function AccountSidebar({ onTabChange, activeTab, onLogout }) {
   return (
     <div className="flex flex-col gap-2">
       <button
@@ -49,7 +50,10 @@ function AccountSidebar({ onTabChange, activeTab }) {
 
       <div className="border-t border-slate-300 my-2" />
 
-      <button className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 transition-colors">
+      <button 
+        onClick={onLogout}
+        className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 transition-colors"
+      >
         <LogOut size={18} /> Salir
       </button>
     </div>
@@ -90,7 +94,8 @@ function HistoryItem({ compra }) {
 }
 
 export default function AccountClient() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [purchases, setPurchases] = useState([]);
@@ -116,6 +121,11 @@ export default function AccountClient() {
     nombre: user?.nombre || "Usuario Nexus",
     email: user?.correo || user?.email || "usuario@nexus.com.co",
     rol: user?.rol || "Miembro",
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
   };
 
   const renderTabContent = () => {
@@ -211,7 +221,7 @@ export default function AccountClient() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] max-w-6xl mx-auto w-full px-4 md:px-6 py-8 gap-8 flex-1 items-start">
       <aside className="bg-[#fcfcf9] border border-slate-200 rounded-2xl p-4 shadow-sm h-fit">
-        <AccountSidebar onTabChange={setActiveTab} activeTab={activeTab} />
+        <AccountSidebar onTabChange={setActiveTab} activeTab={activeTab} onLogout={handleLogout} />
       </aside>
       <main className="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm min-h-[500px]">
         {renderTabContent()}
