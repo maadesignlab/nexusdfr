@@ -85,7 +85,7 @@ function CoworkingModal({ space, onClose, onStartBooking }) {
               onClick={() => onStartBooking(null)}
               className="mt-6 w-full bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors text-[15px]"
             >
-              Reservar en otro horario o fecha
+              Reservar en otro horario o fechaa
             </button>
           </div>
 
