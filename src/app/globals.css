@@ -65,10 +65,12 @@
     background-attachment: fixed;
   }
 
-  h1, h2, h3 {
-    @apply font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
   }
-
+  .title-h2 {
+    @apply text-3xl md:text-4xl font-semibold animate-fade-up; 
+  }
 }
 
 /* =============================

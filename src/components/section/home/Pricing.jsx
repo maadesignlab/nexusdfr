@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from "react";
-import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
+import { useState, useEffect } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 function Pricing() {
   const header = useScrollAnimation();
@@ -45,7 +45,6 @@ function Pricing() {
     },
   };
 
-  /* 🎼 Aparición secuencial real */
   useEffect(() => {
     if (!cards.visible || played) return;
 
@@ -59,27 +58,27 @@ function Pricing() {
   }, [cards.visible, played, plans]);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 space-y-16">
+    <section className="max-w-7xl mx-auto px-6 py-16">
 
       {/* ===== HEADER ===== */}
       <header
         ref={header.ref}
-        className={`max-w-2xl space-y-3 transition-all duration-500 ease-out
+        className={`max-w-2xl mb-12 space-y-3 transition-all duration-500 ease-out
           ${header.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
         `}
       >
         <h2 className="title-h2">
           Planes de Suscripción Nexus
         </h2>
-        <p className="text-slate-600 animate-fade-up stagger-1">
+        <p className="text-slate-600">
           Accede a la librería, coworking y contenidos digitales según tu plan.
         </p>
       </header>
 
-      {/* ===== CARDS ===== */}
+      {/* ===== TABS ===== */}
       <div
         ref={cards.ref}
-        className="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-0 mb-3 md:-mb-3"
+        className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0"
       >
         {Object.entries(plans).map(([key, plan], i) => (
           <article
@@ -94,7 +93,6 @@ function Pricing() {
               ${activePlan === key ? "is-active" : ""}
             `}
           >
-            {/* PRICE BADGE */}
             <div
               className={`
                 price-badge transition-all duration-300
@@ -116,15 +114,15 @@ function Pricing() {
         ))}
       </div>
 
-      {/* ===== SUMMARY ===== */}
+      {/* ===== SUMMARY (PEGADO A LAS TABS) ===== */}
       <aside
         ref={summary.ref}
-        className={`rounded-t-2xl rounded-b-2xl md:rounded-t-none border border-border-light relative z-30 bg-slate-200 p-8 space-y-6 shadow-updeep
+        className={`rounded-b-2xl rounded-t-2xl md:rounded-t-none border border-border-light relative z-30 bg-slate-200 p-8 space-y-6 shadow-updeep md:-mt-3 mt-3
           transition-all duration-500 ease-out
           ${cards.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
         `}
       >
-        <h4 className="text-lg font-semibold animate-fade-up">
+        <h4 className="text-lg font-semibold">
           Resumen del plan
         </h4>
 
@@ -133,7 +131,7 @@ function Pricing() {
             <span className="text-sm text-slate-500">Libros / mes</span>
             <span
               key={`books-${activePlan}`}
-              className="block text-xl font-semibold animate-move-in-left stagger-0"
+              className="block text-xl font-semibold"
             >
               {plans[activePlan].books}
             </span>
@@ -143,7 +141,7 @@ function Pricing() {
             <span className="text-sm text-slate-500">Calidad</span>
             <span
               key={`quality-${activePlan}`}
-              className="block text-xl font-semibold animate-move-in-left stagger-1"
+              className="block text-xl font-semibold"
             >
               {plans[activePlan].quality}
             </span>
@@ -153,7 +151,7 @@ function Pricing() {
             <span className="text-sm text-slate-500">Formato</span>
             <span
               key={`format-${activePlan}`}
-              className="block text-xl font-semibold animate-move-in-left stagger-2"
+              className="block text-xl font-semibold"
             >
               {plans[activePlan].format}
             </span>
@@ -163,7 +161,7 @@ function Pricing() {
             <span className="text-sm text-slate-500">Coworking</span>
             <span
               key={`coworking-${activePlan}`}
-              className="block text-xl font-semibold animate-move-in-left stagger-3"
+              className="block text-xl font-semibold"
             >
               {plans[activePlan].coworking}
             </span>

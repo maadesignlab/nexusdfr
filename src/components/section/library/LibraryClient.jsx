@@ -10,7 +10,7 @@ export default function LibraryClient({ libros }) {
   const [openFilters, setOpenFilters] = useState(false);
 
   return (
-    <main className="min-h-dvh-minusheader max-w-[1480px] mx-auto relative">
+    <main className="min-h-dvh-minusheader mx-auto relative max-w-7xl">
       {/* BOTÓN FILTROS MOBILE */}
       <div className="md:hidden p-5 pb-0">
         <button

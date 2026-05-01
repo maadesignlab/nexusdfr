@@ -19,7 +19,7 @@ function Hero() {
 
   return (
     <section className="w-full py-20">
-      <div className="max-w-7xl mx-auto px-6 grid gap-16 items-center lg:grid-cols-2">
+      <div className="max-w-7xl mx-auto px-6 grid gap-16 items-center lg:grid-cols-2 md:justify-center">
 
         {/* TEXTO */}
         <div
