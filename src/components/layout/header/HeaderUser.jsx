@@ -26,25 +26,17 @@ function HeaderUser({
       <button
         onClick={() => setOpenAccount(!openAccount)}
         className="
-          flex items-center gap-2
-          px-3 py-1.5
-          rounded-md
-          hover:bg-slate-100
+          flex items-center
+          px-5 py-1.5
+          rounded-full
+          border border-[#8a8465]
+          bg-[#eaede9]
+          hover:bg-[#e0e4df]
+          text-black font-bold text-sm
           transition
         "
       >
-        <div className="
-          w-7 h-7
-          rounded-full
-          bg-brand-500 text-black
-          flex items-center justify-center text-xs font-bold
-        ">
-          {user?.nombre?.charAt(0) || "U"}
-        </div>
-
-        <span className="text-sm font-medium">
-          {user?.nombre}
-        </span>
+        Hola, {user?.nombre || "Usuario"}
       </button>
 
       {/* DROPDOWN */}

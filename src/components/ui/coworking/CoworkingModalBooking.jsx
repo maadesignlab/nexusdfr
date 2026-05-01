@@ -48,28 +48,28 @@ function BookingFlow({ space, onClose, selectedHour }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4"
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-[2px] flex items-center justify-center px-4"
       onClick={onClose}
     >
       {isLoading && (
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-50">
-          <p className="text-white">Procesando reserva...</p>
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-50 rounded-[20px]">
+          <p className="text-white font-bold">Procesando reserva...</p>
         </div>
       )}
 
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-white rounded-2xl p-6 md:p-8 space-y-6"
+        className="relative w-full max-w-2xl bg-[#f4f7f9] rounded-[20px] p-8 md:p-10 shadow-2xl space-y-6"
       >
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-xl opacity-70 hover:opacity-100"
+          className="absolute top-6 right-6 text-2xl font-bold opacity-70 hover:opacity-100 text-slate-800"
         >
           ×
         </button>
 
-        <h2 className="text-xl font-bold">
+        <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
           Reserva en {space.nombre}
         </h2>
 
@@ -77,7 +77,7 @@ function BookingFlow({ space, onClose, selectedHour }) {
 
         {/* STEP 1 */}
         {step === 1 && (
-          <div className="space-y-6">
+          <div className="space-y-6 mt-6">
 
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
               {horarios.map((h) => {
@@ -90,13 +90,13 @@ function BookingFlow({ space, onClose, selectedHour }) {
                     disabled={ocupado}
                     onClick={() => update("hora", h)}
                     className={`
-                      py-2 rounded-lg text-sm border transition
+                      py-3 rounded-xl text-sm font-bold border transition-colors
                       ${
                         active
-                          ? "bg-black text-white"
+                          ? "bg-[#0f172a] text-white border-transparent"
                           : ocupado
-                            ? "opacity-40 cursor-not-allowed line-through"
-                            : "hover:bg-slate-100"
+                            ? "bg-[#8b8b8b] text-white/90 border-transparent opacity-80 cursor-not-allowed"
+                            : "bg-transparent border-slate-400 text-slate-900 hover:bg-slate-200"
                       }
                     `}
                   >
@@ -106,15 +106,18 @@ function BookingFlow({ space, onClose, selectedHour }) {
               })}
             </div>
 
-            <div className="flex gap-4">
-              <button onClick={onClose} className="btn-secondary flex-1">
+            <div className="flex gap-4 mt-8">
+              <button 
+                onClick={onClose} 
+                className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
+              >
                 Cancelar
               </button>
 
               <button
                 disabled={!bookingData.hora}
                 onClick={() => setStep(2)}
-                className="btn-primary flex-1 disabled:opacity-50"
+                className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors disabled:opacity-50"
               >
                 Siguiente
               </button>
@@ -125,10 +128,10 @@ function BookingFlow({ space, onClose, selectedHour }) {
 
         {/* STEP 2 */}
         {step === 2 && (
-          <div className="space-y-6">
+          <div className="space-y-6 mt-6">
 
-            <p className="text-sm">
-              Hora: <strong>{bookingData.hora}</strong>
+            <p className="text-[15px] text-slate-900">
+              Hora seleccionada: <strong className="text-xl ml-1">{bookingData.hora}</strong>
             </p>
 
             <input
@@ -136,25 +139,28 @@ function BookingFlow({ space, onClose, selectedHour }) {
               placeholder="Celular"
               value={bookingData.celular}
               onChange={(e) => update("celular", e.target.value)}
-              className="input w-full"
+              className="w-full border border-slate-400 rounded-xl px-4 py-3.5 bg-white outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] text-slate-900"
             />
 
             <textarea
               placeholder="Notas (opcional)"
               value={bookingData.notas}
               onChange={(e) => update("notas", e.target.value)}
-              className="input w-full"
+              className="w-full border border-slate-400 rounded-xl px-4 py-3.5 bg-white outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] text-slate-900 min-h-[120px] resize-y"
             />
 
-            <div className="flex gap-4">
-              <button onClick={() => setStep(1)} className="btn-secondary flex-1">
+            <div className="flex gap-4 mt-8">
+              <button 
+                onClick={() => setStep(1)} 
+                className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
+              >
                 Atrás
               </button>
 
               <button
                 disabled={!bookingData.celular}
                 onClick={() => setStep(3)}
-                className="btn-primary flex-1"
+                className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors disabled:opacity-50"
               >
                 Revisar
               </button>
@@ -165,22 +171,28 @@ function BookingFlow({ space, onClose, selectedHour }) {
 
         {/* STEP 3 */}
         {step === 3 && (
-          <div className="space-y-6">
+          <div className="space-y-6 mt-6">
 
-            <div className="card space-y-2 text-sm">
-              <p><strong>Espacio:</strong> {space.nombre}</p>
-              <p><strong>Hora:</strong> {bookingData.hora}</p>
-              <p><strong>Celular:</strong> {bookingData.celular}</p>
-              <p><strong>Notas:</strong> {bookingData.notas || "—"}</p>
+            <div className="border border-slate-400 rounded-xl p-5 bg-transparent space-y-3 text-[15px] text-slate-800">
+              <p><strong className="text-slate-900">Espacio:</strong> {space.nombre}</p>
+              <p><strong className="text-slate-900">Hora:</strong> {bookingData.hora}</p>
+              <p><strong className="text-slate-900">Celular:</strong> {bookingData.celular}</p>
+              <p><strong className="text-slate-900">Notas:</strong> {bookingData.notas || "—"}</p>
             </div>
 
-            <div className="flex gap-4">
-              <button onClick={() => setStep(2)} className="btn-secondary flex-1">
+            <div className="flex gap-4 mt-8">
+              <button 
+                onClick={() => setStep(2)} 
+                className="flex-1 border border-slate-400 bg-transparent text-slate-900 font-bold py-3.5 rounded-2xl hover:bg-slate-200 transition-colors"
+              >
                 Atrás
               </button>
 
-              <button onClick={handleConfirm} className="btn-primary flex-1">
-                Confirmar
+              <button 
+                onClick={handleConfirm} 
+                className="flex-1 bg-[#0f172a] text-white font-bold py-3.5 rounded-2xl hover:bg-black transition-colors"
+              >
+                Confirmar Reserva
               </button>
             </div>
 
