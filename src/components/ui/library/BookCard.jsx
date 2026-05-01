@@ -20,11 +20,30 @@ function BookCard({ libro }) {
   };
 
   return (
-    <article className="relative glass-card p-5 flex flex-col transition-all">
-
+    <article
+      className="
+        relative h-full
+        glass-card
+        p-4
+        flex flex-col
+        transition-all duration-300
+        hover:-translate-y-1
+        hover:shadow-xl
+        hover:border-brand-500/40
+      "
+    >
       {/* BADGE */}
       {libro.masVendido && (
-        <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500 text-white z-10">
+        <span
+          className="
+            absolute top-3 left-3 z-10
+            px-2.5 py-1
+            rounded-full
+            text-[11px] font-bold
+            bg-brand-500 text-white
+            shadow-sm
+          "
+        >
           Más vendido
         </span>
       )}
@@ -32,7 +51,14 @@ function BookCard({ libro }) {
       {/* IMAGE */}
       <div
         onClick={() => router.push(`/library/${libro.id}`)}
-        className="relative w-full aspect-[2/3] mt-6 mb-4 rounded-xl overflow-hidden cursor-pointer"
+        className="
+          relative w-full
+          h-[210px]
+          mb-4
+          rounded-xl overflow-hidden
+          cursor-pointer
+          bg-slate-50
+        "
       >
         <BookImage
           src={libro.imagen}
@@ -41,42 +67,66 @@ function BookCard({ libro }) {
         />
       </div>
 
-      {/* TITLE */}
-      <h3 className="min-h-[3rem] flex items-center font-semibold text-base line-clamp-2">
-        {libro.titulo}
-      </h3>
+      {/* CONTENT */}
+      <div className="flex flex-1 flex-col">
+        {/* TITLE */}
+        <h3
+          className="
+            min-h-[2.6rem]
+            font-semibold
+            text-sm
+            leading-snug
+            text-slate-950
+            line-clamp-2
+          "
+        >
+          {libro.titulo}
+        </h3>
 
-      {/* AUTHOR */}
-      <p className="text-sm text-text-primary">
-        {libro.autor}
-      </p>
+        {/* AUTHOR */}
+        <p className="mt-1 text-xs text-slate-600 line-clamp-1">
+          {libro.autor}
+        </p>
 
-      {/* CATEGORY */}
-      <p className="text-xs text-brand-700 mb-3">
-        {libro.categoria}
-      </p>
+        {/* CATEGORY */}
+        <p className="mt-0.5 text-[11px] font-medium text-brand-700 line-clamp-1">
+          {libro.categoria}
+        </p>
 
-      {/* PRICE */}
-      <p className="text-lg font-bold mt-auto mb-4">
-        ${libro.precio?.toLocaleString()}
-      </p>
+        {/* PRICE */}
+        <p className="mt-3 text-base font-bold text-slate-950">
+          ${libro.precio?.toLocaleString()}
+        </p>
 
-      {/* BUTTON DETAIL */}
-      <button
-        onClick={() => router.push(`/library/${libro.id}`)}
-        className="btn-primary w-full py-2 mt-3"
-      >
-        Ver detalle
-      </button>
+        {/* ACTIONS */}
+        <div className="mt-auto pt-4 space-y-2">
+          {/* BUTTON DETAIL */}
+          <button
+            onClick={() => router.push(`/library/${libro.id}`)}
+            className="
+              btn-primary
+              w-full py-2
+              text-xs font-bold
+              rounded-xl
+            "
+          >
+            Ver detalle
+          </button>
 
-      {/* BUTTON CART */}
-      <button
-        onClick={handleAddToCart}
-        className="btn-primary w-full py-2 mt-3"
-      >
-        Añadir al carrito
-      </button>
-
+          {/* BUTTON CART */}
+          <button
+            onClick={handleAddToCart}
+            className="
+              btn-primary
+              w-full py-2
+              text-xs font-bold
+              rounded-xl
+            "
+          >
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
     </article>
   );
 }
