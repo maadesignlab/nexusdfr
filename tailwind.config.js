@@ -13,7 +13,7 @@ export default {
          ===================== */
       colors: {
         brand: {
-          primary: "#fdf001",
+          primary: "#1f2937",
           50: "#fcffe7",
           100: "#f7ffc1",
           200: "#f4ff86",

@@ -83,11 +83,23 @@ function HeaderMobile({ open, user, totalItems, onClose, onLogout }) {
                 <>
                   <Link href="/library" onClick={onClose}>📚 Librería</Link>
                   <Link href="/coworking" onClick={onClose}>💼 Coworking</Link>
-                  <Link href="/cafeteria" onClick={onClose}>☕ Cafetería</Link>
+
                   <Link href="/cart" onClick={onClose}>
                     🛒 Carrito ({totalItems})
                   </Link>
                   <Link href="/account" onClick={onClose}>👤 Mi cuenta</Link>
+                  
+                  <div className="border-t border-border-default my-2"></div>
+                  
+                  <button 
+                    onClick={() => {
+                      if (onLogout) onLogout();
+                      onClose();
+                    }} 
+                    className="flex items-center gap-2 text-red-500 font-medium text-left mt-2"
+                  >
+                    <LogOut size={18} /> Cerrar sesión
+                  </button>
                 </>
               )}
             </nav>
