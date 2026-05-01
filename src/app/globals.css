@@ -226,4 +226,22 @@
     height: calc(100vh - var(--header-height));
   }
 
+  /* ===== Custom Scrollbar (Tailwind 4) ===== */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #bcbcbc transparent; /* usa tu brand */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-brand-300; /* usa tu brand */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
 }
