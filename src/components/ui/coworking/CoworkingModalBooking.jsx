@@ -37,9 +37,8 @@ function BookingFlow({ space, onClose, selectedHour }) {
       await new Promise((res) => setTimeout(res, 1200));
 
       // 🔥 aquí conectarías backend
-
-      onClose();
-      router.push("/dashboard");
+      
+      setStep(4);
 
     } finally {
       stopLoading();
@@ -61,19 +60,23 @@ function BookingFlow({ space, onClose, selectedHour }) {
         onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-2xl bg-[#f4f7f9] rounded-[20px] p-8 md:p-10 shadow-2xl space-y-6"
       >
-        {/* CLOSE */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 text-2xl font-bold opacity-70 hover:opacity-100 text-slate-800"
-        >
-          ×
-        </button>
+        {step < 4 && (
+          <>
+            {/* CLOSE */}
+            <button
+              onClick={onClose}
+              className="absolute top-6 right-6 text-2xl font-bold opacity-70 hover:opacity-100 text-slate-800"
+            >
+              ×
+            </button>
 
-        <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
-          Reserva en {space.nombre}
-        </h2>
+            <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
+              Reserva en {space.nombre}
+            </h2>
 
-        <Stepper step={step} clickable={false} />
+            <Stepper step={step} clickable={false} />
+          </>
+        )}
 
         {/* STEP 1 */}
         {step === 1 && (
@@ -196,6 +199,32 @@ function BookingFlow({ space, onClose, selectedHour }) {
               </button>
             </div>
 
+          </div>
+        )}
+
+        {/* STEP 4 */}
+        {step === 4 && (
+          <div className="flex flex-col items-center text-center py-6 space-y-4">
+            <div className="w-20 h-20 bg-[#e8f5e9] text-[#2e7d32] rounded-full flex items-center justify-center mb-4">
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            
+            <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">
+              ¡Reserva Confirmada!
+            </h2>
+            
+            <p className="text-[15px] text-slate-600 max-w-sm mx-auto leading-relaxed">
+              Tu reserva para la <strong className="text-slate-900">{space.nombre}</strong> a las <strong className="text-slate-900">{bookingData.hora}</strong> ha sido agendada con éxito.
+            </p>
+            
+            <button 
+              onClick={() => { onClose(); router.push("/dashboard"); }} 
+              className="mt-8 w-full sm:w-auto bg-[#0f172a] text-white font-bold px-12 py-3.5 rounded-2xl hover:bg-black transition-colors"
+            >
+              Volver al inicio
+            </button>
           </div>
         )}
 
