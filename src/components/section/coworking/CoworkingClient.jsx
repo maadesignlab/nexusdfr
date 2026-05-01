@@ -10,7 +10,7 @@ function CoworkingClient({ spaces = [] }) {
 
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
-  const [estadoFiltro, setEstadoFiltro] = useState("todos");
+  const [estadoFiltro, setEstadoFiltro] = useState("Todos");
 
   const closeModal = () => {
     setSelectedSpace(null);
@@ -21,10 +21,10 @@ function CoworkingClient({ spaces = [] }) {
   const { grouped, stats } = useMemo(() => {
 
     const filtered =
-      estadoFiltro === "todos"
+      estadoFiltro === "Todos"
         ? spaces
         : spaces.filter(s =>
-          estadoFiltro === "disponible" ? !s.ocupado : s.ocupado
+          estadoFiltro === "Disponible" ? !s.ocupado : s.ocupado
         );
 
     const grouped = filtered.reduce((acc, space) => {
@@ -65,7 +65,7 @@ function CoworkingClient({ spaces = [] }) {
 
         {/* FILTROS */}
         <div className="flex gap-4">
-          {["todos", "disponible", "ocupado"].map((estado) => (
+          {["Todos", "Disponible", "Ocupado"].map((estado) => (
             <button
               key={estado}
               onClick={() => setEstadoFiltro(estado)}
